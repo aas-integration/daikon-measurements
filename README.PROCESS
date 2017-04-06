@@ -2,6 +2,28 @@ This file contains notes on how to collect a new set of Daikon measurements.
 
 !UNFINISHED!
 
+If you already have a Pascali test directory, you may skip to section B.
+
+
+A. Setting up the Pascali test environment.
+
+The first step is to create a skeleton test directory by cloning the integration-test2
+repository.  The example commands in this document assume this directory is named "testcase".
+
+git clone https://github.com/aas-integration/integration-test2.git testcase
+
+Read through testcase/README.md to get a general idea of what needs to be done.  For Daikon
+data collection you do not need to do all the steps, the details are below; however, you
+need to need to ensure your system meets the requirements listed in the "Dependencies and
+Requirements" section.
+
+PROBLEMS: The fetchdependancies.sh script does not setup diakon corectly.  I had never
+noticed as I always reset the appropriate enviornment variables to point to my local
+copy of daikon.  I have partially debugged, but needs more work.
+
+
+B. Setting up the Daikon data collection tools.
+
 Setup a standard corpus testcase directory and then copy the three files listed below
 into that directory. 
 
@@ -16,10 +38,6 @@ To run the test process cd to the testcase directory and run:
 
 To run entire collect-inv-numbers script on eel takes about 3.5 hours.
 
-
-WARNING: At the present time this process will not work. There are required changes to
-some files in the integration-test2 and do-like-javac repositories that have not 
-been pushed.
 
 collect-inv-numbers.sh
 count-inv.pl
