@@ -1,7 +1,5 @@
 This file contains notes on how to collect a new set of Daikon measurements.
 
-!UNFINISHED!
-
 If you already have a Pascali test directory, you may skip to section B.
 
 
@@ -10,27 +8,42 @@ A. Setting up the Pascali test environment.
 The first step is to create a skeleton test directory by cloning the integration-test2
 repository.  The example commands in this document assume this directory is named "testcase".
 
-git clone https://github.com/aas-integration/integration-test2.git testcase
+  git clone https://github.com/aas-integration/integration-test2.git testcase
 
 Read through testcase/README.md to get a general idea of what needs to be done.  For Daikon
 data collection you do not need to do all the steps, the details are below; however, you
 need to need to ensure your system meets the requirements listed in the "Dependencies and
 Requirements" section.
 
-PROBLEMS: The fetchdependancies.sh script does not setup diakon corectly.  I had never
-noticed as I always reset the appropriate enviornment variables to point to my local
-copy of daikon.  I have partially debugged, but needs more work.
+Set the JAVA_HOME environment variable - it should point to your Java 8 JDK.  Example:
+  export JAVA_HOME=/homes/gws/markro/jdk8
+
+Now you are ready to setup the test directory:
+  cd testcase
+  python fetch.py
+This will run for quite a while setting up test directories and then loading and
+compiling Daikon.
+
+Now finish setting up your environment:
+  export DAIKONDIR=`pwd`/tools/daikon-src
+  source $DAIKONDIR/scripts/daikon.bashrc
+The latter script is primarily to get CLASSPATH set correctly.
 
 
 B. Setting up the Daikon data collection tools.
 
-Setup a standard corpus testcase directory and then copy the three files listed below
-into that directory. 
+Copy the three files listed in section (C) into your test directory.
 
-To run with DynComp you will need to have a diakon enlistment and have set the
-usual envrionment variables to point there.  If you have local changes to 
+NOTE: Changes were made to the Pascali repositories on 4/6/17 that required changes
+to these tools.  You must run with the latest version of the Pascali repos.
+
+To run with DynComp you will need to have a daikon enlistment and have set the
+usual environment variables to point there.  If you have local changes to
 the daikon tool set that you wish to test, you will need to copy your daikon.jar
 to the testcase/lib directory.
+
+NOTE: I have suggested a change to the Corpus tools that would allow one to
+just set DAIKONDIR and not have to copy daikon.jar.
 
 To run the test process cd to the testcase directory and run:
 
@@ -38,6 +51,8 @@ To run the test process cd to the testcase directory and run:
 
 To run entire collect-inv-numbers script on eel takes about 3.5 hours.
 
+
+C. Notes on tools/scripts
 
 collect-inv-numbers.sh
 count-inv.pl
