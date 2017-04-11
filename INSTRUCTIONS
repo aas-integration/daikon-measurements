@@ -45,9 +45,13 @@ to the testcase/lib directory.
 NOTE: I have suggested a change to the Corpus tools that would allow one to
 just set DAIKONDIR and not have to copy daikon.jar.
 
+IMPORTANT: The consistency of the results depends on randoop generating consistent
+test cases.  This can vary depending on test machine load.  Therefore, it is important
+that the test suite is the only task running on your test machine.
+
 To run the test process cd to the testcase directory and run:
 
-  bash -v ./collect-inv-numbers.sh 2>&1 | tee results.log
+  ./collect-inv-numbers.sh 2>&1 | tee results.log
 
 To run entire collect-inv-numbers script on eel takes about 3.5 hours.
 
