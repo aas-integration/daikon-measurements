@@ -43,7 +43,7 @@ perhaps one with local changes, you must set the DAIKONDIR environment
 variable to that location.  In addition, you will need to copy your
 daikon.jar to the testcase/lib directory.
 
-NOTE: I have suggested a change to the Corpus tools that would allow one to
+NOTE: The Corpus tools now allow one to
 just set DAIKONDIR and not have to copy daikon.jar.
 
 IMPORTANT:
@@ -51,6 +51,10 @@ The consistency of the results depends on randoop generating consistent
 test cases.  This can vary depending on the test machine load.  Therefore,
 it is important that the test suite is the only task running on your
 test machine.
+
+ALSO IMPORTANT:
+Try to run the suite on a system that does NOT have XTERM/X11 enabled.
+Otherwise, some test cases hang waiting for dialog boxes to close.
 
 To run the test process cd to the testcase directory and run:
 
